@@ -10,6 +10,12 @@
 
 ## Code Style & Conventions
 - **Stack:** Laravel 12, Vue 3 (Composition API `<script setup>`), Inertia.js, Tailwind CSS 4.
+- **UI Design System:** "Brutalist" aesthetic.
+  - High contrast (black/white + strong accents like neon yellow/pink/blue).
+  - Thick borders (`border-2` or `border-4` black).
+  - Sharp shadows (`shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]`).
+  - Monospace or bold sans-serif typography.
+  - Minimal rounding (`rounded-none` or `rounded-sm`).
 - **Formatting:** PHP: PSR-12 (via Pint). JS/Vue: Prettier/ESLint.
 - **Naming:** PascalCase for Classes/Components (`User.php`, `Button.vue`). camelCase for methods/variables. snake_case for DB columns.
 - **Imports:** Group imports. Use absolute paths (aliases) like `@/Components` where possible.
