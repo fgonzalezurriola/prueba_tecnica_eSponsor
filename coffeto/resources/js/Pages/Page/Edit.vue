@@ -17,11 +17,61 @@ const form = useForm({
     avatar_path: props.page.avatar_path,
 });
 
+const linkForm = useForm({
+    id: null,
+    title: '',
+    url: '',
+    sort_order: 0,
+});
+
 const submit = () => {
     form.post(route('page.update'), {
-        onSuccess: () => form.reset(),
+        preserveScroll: true,
     });
 };
+
+const resetLinkForm = () => {
+    linkForm.id = null;
+    linkForm.title = '';
+    linkForm.url = '';
+    linkForm.sort_order = props.page.links.length;
+};
+
+const submitLink = () => {
+    const isEditing = !!linkForm.id;
+
+    const url = isEditing
+        ? route('links.update', linkForm.id)
+        : route('links.store');
+
+    const method = isEditing ? 'patch' : 'post';
+
+    linkForm[method](url, {
+        preserveScroll: true,
+        onSuccess: () => {
+            resetLinkForm();
+        },
+    });
+};
+
+const editLink = (link) => {
+    linkForm.id = link.id;
+    linkForm.title = link.title;
+    linkForm.url = link.url;
+    linkForm.sort_order = link.sort_order ?? 0;
+};
+
+const deleteLink = (id) => {
+    if (!confirm('Delete this link?')) {
+        return;
+    }
+
+    linkForm.delete(route('links.destroy', id), {
+        preserveScroll: true,
+    });
+};
+
+resetLinkForm();
 </script>
 
 <template>
@@ -42,7 +92,7 @@ const submit = () => {
                             Edit Your Profile
                         </h3>
 
-                        <form @submit.prevent="submit" class="space-y-6">
+                        <form @submit.prevent="submit" class="space-y-6 border-b-4 border-dashed border-black pb-8 mb-8">
                             <div>
                                 <InputLabel for="title" value="Public Name" class="uppercase font-bold" />
                                 <TextInput
@@ -113,6 +163,105 @@ const submit = () => {
                                 </Transition>
                             </div>
                         </form>
+
+                        <div>
+                            <h3 class="text-xl font-black uppercase mb-4 bg-lime-300 dark:bg-pink-500 inline-block px-2 border-2 border-black dark:border-white text-black dark:text-white">
+                                Links
+                            </h3>
+
+                            <form @submit.prevent="submitLink" class="space-y-4 mb-6">
+                                <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
+                                    <div class="flex-1">
+                                        <InputLabel for="link-title" value="Title" class="uppercase font-bold" />
+                                        <TextInput
+                                            id="link-title"
+                                            type="text"
+                                            class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                            v-model="linkForm.title"
+                                            required
+                                        />
+                                        <InputError class="mt-2" :message="linkForm.errors.title" />
+                                    </div>
+
+                                    <div class="flex-1">
+                                        <InputLabel for="link-url" value="URL" class="uppercase font-bold" />
+                                        <TextInput
+                                            id="link-url"
+                                            type="url"
+                                            class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                            v-model="linkForm.url"
+                                            required
+                                        />
+                                        <InputError class="mt-2" :message="linkForm.errors.url" />
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <PrimaryButton
+                                        :disabled="linkForm.processing"
+                                        class="rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-black text-white font-black uppercase"
+                                    >
+                                        {{ linkForm.id ? 'Update Link' : 'Add Link' }}
+                                    </PrimaryButton>
+
+                                    <button
+                                        v-if="linkForm.id"
+                                        type="button"
+                                        @click="resetLinkForm"
+                                        class="text-xs font-bold uppercase border-2 border-black px-3 py-2 bg-white hover:bg-gray-100 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                    >
+                                        Cancel edit
+                                    </button>
+                                </div>
+                            </form>
+
+                            <div
+                                v-if="page.links && page.links.length"
+                                class="space-y-2 border-2 border-black p-4 bg-gray-50 dark:bg-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                            >
+                                <div
+                                    v-for="link in page.links"
+                                    :key="link.id"
+                                    class="flex items-center justify-between gap-4 bg-white dark:bg-gray-800 border-2 border-black px-3 py-2"
+                                >
+                                    <div>
+                                        <p class="font-black uppercase text-sm">
+                                            {{ link.title }}
+                                        </p>
+                                        <a
+                                            :href="link.url"
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            class="text-xs font-mono underline text-blue-700 dark:text-blue-400 break-all"
+                                        >
+                                            {{ link.url }}
+                                        </a>
+                                    </div>
+                                    <div class="flex items-center gap-2">
+                                        <button
+                                            type="button"
+                                            @click="editLink(link)"
+                                            class="text-xs font-bold uppercase border-2 border-black px-3 py-1 bg-yellow-300 hover:bg-yellow-200 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                        >
+                                            Edit
+                                        </button>
+                                        <button
+                                            type="button"
+                                            @click="deleteLink(link.id)"
+                                            class="text-xs font-bold uppercase border-2 border-black px-3 py-1 bg-red-500 text-white hover:bg-red-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                        >
+                                            Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <p
+                                v-else
+                                class="text-xs font-mono uppercase text-gray-600 mt-2 border border-dashed border-gray-400 px-2 py-1 inline-block"
+                            >
+                                No links yet. Add your first one above.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -6,6 +6,8 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+use App\Http\Controllers\PublicPageController;
+
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -23,9 +25,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/page', [PageController::class, 'edit'])->name('page.edit');
     Route::post('/page', [PageController::class, 'update'])->name('page.update');
 
+    Route::post('/links', [\App\Http\Controllers\LinkController::class, 'store'])->name('links.store');
+    Route::patch('/links/{link}', [\App\Http\Controllers\LinkController::class, 'update'])->name('links.update');
+    Route::delete('/links/{link}', [\App\Http\Controllers\LinkController::class, 'destroy'])->name('links.destroy');
+
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+Route::get('/@{slug}', [PublicPageController::class, 'show'])->name('public.page');
 
 require __DIR__.'/auth.php';
