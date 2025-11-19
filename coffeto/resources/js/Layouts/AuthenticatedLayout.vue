@@ -1,6 +1,7 @@
 <script setup>
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+import HomeLink from '@/Components/HomeLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
@@ -11,6 +12,7 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
+        <HomeLink />
         <div class="min-h-screen bg-orange-50">
             <nav class="border-b-3 border-black bg-white">
                 <!-- Primary Navigation Menu -->

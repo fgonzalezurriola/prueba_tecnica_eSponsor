@@ -1,9 +1,11 @@
 <script setup>
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
+import HomeLink from '@/Components/HomeLink.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
+    <HomeLink />
     <div
         class="flex min-h-screen flex-col items-center bg-neo-yellow pt-6 sm:justify-center sm:pt-0"
     >

@@ -1,4 +1,5 @@
 <script setup>
+import HomeLink from '@/Components/HomeLink.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import Modal from '@/Components/Modal.vue';
@@ -41,6 +42,9 @@ const submitSupport = () => {
 
 <template>
     <Head :title="page.title" />
+
+    <!-- Home Link -->
+    <HomeLink />
 
     <div
         class="flex min-h-screen flex-col items-center justify-center bg-neo-yellow p-4 font-sans"
@@ -206,7 +210,7 @@ const submitSupport = () => {
                                 min="100"
                                 max="10000"
                                 step="100"
-                                class="mt-1 block w-full text-3xl font-black text-center"
+                                class="mt-1 block w-full text-center text-3xl font-black"
                             />
                         </div>
                         <p
