@@ -87,13 +87,17 @@ You need to run both the Laravel server and (optionally) the Vite development se
    ```bash
    php artisan serve
    ```
-   Access the app at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+   By default, Laravel serves the app at [http://127.0.0.1:8000](http://127.0.0.1:8000) (if that port is busy it may pick another; check the terminal output).
 
 2. **(Optional) Start Vite Dev Server**
    If you are developing and want hot module replacement:
    ```bash
    npm run dev
    ```
+
+3. **Demo Account & Public Page**
+   - Demo user: `demo@coffeto.test` / `password`
+   - Demo public page: open `/@demo-creator` on the same host/port as the Laravel server (for example, [http://127.0.0.1:8000/@demo-creator](http://127.0.0.1:8000/@demo-creator)).
 
 ## Testing
 

@@ -12,19 +12,19 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="min-h-screen bg-orange-50">
             <nav
-                class="border-b border-gray-100 bg-white dark:border-gray-700 dark:bg-gray-800"
+                class="border-b-3 border-black bg-white"
             >
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                    <div class="flex h-16 justify-between">
+                    <div class="flex h-20 justify-between">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
                                 <Link :href="route('dashboard')">
                                     <ApplicationLogo
-                                        class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200"
+                                        class="block h-10 w-auto fill-current text-black hover:scale-110 transition-transform duration-200"
                                     />
                                 </Link>
                             </div>
@@ -53,10 +53,10 @@ const showingNavigationDropdown = ref(false);
                             <div class="relative ms-3">
                                 <Dropdown align="right" width="48">
                                     <template #trigger>
-                                        <span class="inline-flex rounded-md">
+                                        <span class="inline-flex rounded-none">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center rounded-md border border-transparent bg-white px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none dark:bg-gray-800 dark:text-gray-400 dark:hover:text-gray-300"
+                                                class="inline-flex items-center rounded-none border-2 border-black bg-white px-3 py-2 text-sm font-bold leading-4 text-black shadow-neo transition duration-150 ease-in-out hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none hover:bg-neo-yellow focus:outline-none"
                                             >
                                                 {{ $page.props.auth.user.name }}
 
@@ -101,7 +101,7 @@ const showingNavigationDropdown = ref(false);
                                     showingNavigationDropdown =
                                         !showingNavigationDropdown
                                 "
-                                class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none dark:text-gray-500 dark:hover:bg-gray-900 dark:hover:text-gray-400 dark:focus:bg-gray-900 dark:focus:text-gray-400"
+                                class="inline-flex items-center justify-center rounded-none border-2 border-black bg-white p-2 text-black shadow-neo transition duration-150 ease-in-out hover:bg-neo-yellow focus:bg-neo-yellow focus:outline-none"
                             >
                                 <svg
                                     class="h-6 w-6"
@@ -117,7 +117,7 @@ const showingNavigationDropdown = ref(false);
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        stroke-width="2"
+                                        stroke-width="3"
                                         d="M4 6h16M4 12h16M4 18h16"
                                     />
                                     <path
@@ -128,7 +128,7 @@ const showingNavigationDropdown = ref(false);
                                         }"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        stroke-width="2"
+                                        stroke-width="3"
                                         d="M6 18L18 6M6 6l12 12"
                                     />
                                 </svg>
@@ -143,7 +143,7 @@ const showingNavigationDropdown = ref(false);
                         block: showingNavigationDropdown,
                         hidden: !showingNavigationDropdown,
                     }"
-                    class="sm:hidden"
+                    class="sm:hidden border-t-2 border-black bg-white"
                 >
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
@@ -152,19 +152,25 @@ const showingNavigationDropdown = ref(false);
                         >
                             Dashboard
                         </ResponsiveNavLink>
+                        <ResponsiveNavLink
+                            :href="route('page.edit')"
+                            :active="route().current('page.edit')"
+                        >
+                            Manage Page
+                        </ResponsiveNavLink>
                     </div>
 
                     <!-- Responsive Settings Options -->
                     <div
-                        class="border-t border-gray-200 pb-1 pt-4 dark:border-gray-600"
+                        class="border-t-2 border-black pb-1 pt-4"
                     >
                         <div class="px-4">
                             <div
-                                class="text-base font-medium text-gray-800 dark:text-gray-200"
+                                class="text-base font-black text-black"
                             >
                                 {{ $page.props.auth.user.name }}
                             </div>
-                            <div class="text-sm font-medium text-gray-500">
+                            <div class="text-sm font-bold text-gray-600">
                                 {{ $page.props.auth.user.email }}
                             </div>
                         </div>
@@ -187,7 +193,7 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Page Heading -->
             <header
-                class="bg-white shadow dark:bg-gray-800"
+                class="bg-neo-yellow border-b-3 border-black shadow-neo-sm"
                 v-if="$slots.header"
             >
                 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">

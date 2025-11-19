@@ -1,7 +1,7 @@
 <?php
 
-it('returns a successful response', function () {
+it('redirects root to demo public page', function () {
     $response = $this->get('/');
 
-    $response->assertStatus(200);
+    $response->assertRedirect(route('public.page', ['slug' => 'demo-creator']));
 });
