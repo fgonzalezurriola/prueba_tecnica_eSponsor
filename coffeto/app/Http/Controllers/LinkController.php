@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SaveLinkRequest;
@@ -12,6 +14,8 @@ class LinkController extends Controller
     public function store(SaveLinkRequest $request): RedirectResponse
     {
         $page = $request->user()->page;
+
+        abort_unless($page, 404);
 
         $page->links()->create($request->validated());
 

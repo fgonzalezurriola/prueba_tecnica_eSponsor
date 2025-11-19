@@ -1,19 +1,27 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdatePageRequest;
-use App\Models\Page;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class PageController extends Controller
 {
-    public function edit(Request $request)
+    /**
+     * Lazily creates a page for the user if it does not exist.
+     */
+    public function edit(Request $request): Response
     {
-        $page = $request->user()->page ?? $request->user()->page()->create([
-            'slug' => $request->user()->id . '-' . time(), // Temporary slug
-            'title' => $request->user()->name,
+        $user = $request->user();
+
+        $page = $user->page ?? $user->page()->create([
+            'slug' => $user->id . '-' . time(),
+            'title' => $user->name,
         ]);
 
         return Inertia::render('Page/Edit', [
@@ -21,7 +29,7 @@ class PageController extends Controller
         ]);
     }
 
-    public function update(UpdatePageRequest $request)
+    public function update(UpdatePageRequest $request): RedirectResponse
     {
         $page = $request->user()->page;
 

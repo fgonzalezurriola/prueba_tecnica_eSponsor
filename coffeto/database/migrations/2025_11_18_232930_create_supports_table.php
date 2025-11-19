@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('page_id')->constrained()->cascadeOnDelete();
             $table->string('supporter_name');
             $table->text('message')->nullable();
-            $table->integer('amount');
+            $table->unsignedInteger('amount');
             $table->timestamps();
         });
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -22,7 +24,6 @@ class SaveLinkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => ['nullable', 'integer', 'exists:links,id'],
             'title' => ['required', 'string', 'max:255'],
             'url' => ['required', 'url', 'max:255'],
             'sort_order' => ['nullable', 'integer', 'min:0'],

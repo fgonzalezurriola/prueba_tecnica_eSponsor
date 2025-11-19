@@ -1,16 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Page;
-use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class PublicPageController extends Controller
 {
-    public function show(string $slug)
+    public function show(string $slug): Response
     {
-        $page = Page::with(['user', 'links', 'supports'])->where('slug', $slug)->firstOrFail();
+        $page = Page::with(['user', 'links'])
+            ->withCount('supports')
+            ->where('slug', $slug)
+            ->firstOrFail();
 
         return Inertia::render('Public/Show', [
             'page' => [
@@ -26,7 +31,7 @@ class PublicPageController extends Controller
                         'url' => $link->url,
                     ];
                 }),
-                'supports_count' => $page->supports->count(),
+                'supports_count' => $page->supports_count,
             ],
         ]);
     }

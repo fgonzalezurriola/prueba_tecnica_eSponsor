@@ -23,7 +23,7 @@ Route::get('/dashboard', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/page', [PageController::class, 'edit'])->name('page.edit');
-    Route::post('/page', [PageController::class, 'update'])->name('page.update');
+    Route::patch('/page', [PageController::class, 'update'])->name('page.update');
 
     Route::post('/links', [\App\Http\Controllers\LinkController::class, 'store'])->name('links.store');
     Route::patch('/links/{link}', [\App\Http\Controllers\LinkController::class, 'update'])->name('links.update');

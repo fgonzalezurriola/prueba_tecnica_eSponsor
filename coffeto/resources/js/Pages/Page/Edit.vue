@@ -25,7 +25,7 @@ const linkForm = useForm({
 });
 
 const submit = () => {
-    form.post(route('page.update'), {
+    form.patch(route('page.update'), {
         preserveScroll: true,
     });
 };

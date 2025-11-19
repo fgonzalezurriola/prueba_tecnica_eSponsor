@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePageRequest extends FormRequest
 {
@@ -21,11 +24,19 @@ class UpdatePageRequest extends FormRequest
      */
     public function rules(): array
     {
+        $pageId = $this->user()->page?->id;
+
         return [
-            'slug' => ['required', 'string', 'max:255', 'unique:pages,slug,' . $this->user()->page->id, 'alpha_dash'],
+            'slug' => [
+                'required',
+                'string',
+                'max:255',
+                'alpha_dash',
+                Rule::unique('pages', 'slug')->ignore($pageId),
+            ],
             'title' => ['required', 'string', 'max:255'],
             'bio' => ['nullable', 'string', 'max:1000'],
-            'avatar_path' => ['nullable', 'url', 'max:255'], // Just URL for now as per requirements
+            'avatar_path' => ['nullable', 'url', 'max:255'],
         ];
     }
 }
