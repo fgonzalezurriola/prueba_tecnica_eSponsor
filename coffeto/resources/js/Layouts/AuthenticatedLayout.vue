@@ -22,10 +22,8 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
-                                <Link :href="route('dashboard')">
-                                    <ApplicationLogo
-                                        class="block h-10 w-auto fill-current text-black hover:scale-110 transition-transform duration-200"
-                                    />
+                                <Link :href="route('dashboard')" class="text-2xl font-black uppercase tracking-tighter text-black hover:text-gray-700">
+                                    Coffeto
                                 </Link>
                             </div>
 

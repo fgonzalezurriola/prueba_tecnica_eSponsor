@@ -80,26 +80,26 @@ resetLinkForm();
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-black text-xl text-gray-800 dark:text-gray-200 leading-tight uppercase tracking-tighter">
+            <h2 class="font-black text-xl text-black leading-tight uppercase tracking-tighter">
                 Creator Page
             </h2>
         </template>
 
         <div class="py-12">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-4 border-black dark:border-white sm:rounded-none">
-                    <div class="p-6 text-gray-900 dark:text-gray-100">
-                        <h3 class="text-2xl font-black uppercase mb-6 bg-yellow-300 dark:bg-purple-600 inline-block px-2 border-2 border-black dark:border-white text-black dark:text-white">
+                <div class="bg-white overflow-hidden shadow-neo-lg border-3 border-black sm:rounded-none">
+                    <div class="p-6 text-black">
+                        <h3 class="text-2xl font-black uppercase mb-6 bg-neo-yellow inline-block px-2 border-3 border-black text-black">
                             Edit Your Profile
                         </h3>
 
                         <form @submit.prevent="submit" class="space-y-6 border-b-4 border-dashed border-black pb-8 mb-8">
                             <div>
-                                <InputLabel for="title" value="Public Name" class="uppercase font-bold" />
+                                <InputLabel for="title" value="Public Name" class="uppercase font-black" />
                                 <TextInput
                                     id="title"
                                     type="text"
-                                    class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                    class="mt-1 block w-full rounded-none border-3 border-black shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                     v-model="form.title"
                                     required
                                     autofocus
@@ -109,13 +109,13 @@ resetLinkForm();
                             </div>
 
                             <div>
-                                <InputLabel for="slug" value="Username (Slug)" class="uppercase font-bold" />
+                                <InputLabel for="slug" value="Username (Slug)" class="uppercase font-black" />
                                 <div class="flex items-center">
-                                    <span class="px-3 py-2 bg-gray-100 border-2 border-r-0 border-black text-gray-600 font-mono">/</span>
+                                    <span class="px-3 py-2 bg-gray-100 border-3 border-r-0 border-black text-black font-black font-mono">/</span>
                                     <TextInput
                                         id="slug"
                                         type="text"
-                                        class="mt-0 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                        class="mt-0 block w-full rounded-none border-3 border-black shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                         v-model="form.slug"
                                         required
                                         autocomplete="username"
@@ -125,10 +125,10 @@ resetLinkForm();
                             </div>
 
                             <div>
-                                <InputLabel for="bio" value="Bio" class="uppercase font-bold" />
+                                <InputLabel for="bio" value="Bio" class="uppercase font-black" />
                                 <textarea
                                     id="bio"
-                                    class="mt-1 block w-full border-2 border-black dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-none shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                    class="mt-1 block w-full border-3 border-black focus:border-black focus:ring-0 rounded-none shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                     v-model="form.bio"
                                     rows="3"
                                 ></textarea>
@@ -136,11 +136,11 @@ resetLinkForm();
                             </div>
 
                             <div>
-                                <InputLabel for="avatar_path" value="Avatar URL" class="uppercase font-bold" />
+                                <InputLabel for="avatar_path" value="Avatar URL" class="uppercase font-black" />
                                 <TextInput
                                     id="avatar_path"
                                     type="url"
-                                    class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                    class="mt-1 block w-full rounded-none border-3 border-black shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                     v-model="form.avatar_path"
                                     placeholder="https://..."
                                 />
@@ -148,7 +148,7 @@ resetLinkForm();
                             </div>
 
                             <div class="flex items-center gap-4">
-                                <PrimaryButton :disabled="form.processing" class="rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-black text-white font-black uppercase">
+                                <PrimaryButton :disabled="form.processing" class="bg-black text-white hover:bg-gray-800">
                                     Save Changes
                                 </PrimaryButton>
 
@@ -158,7 +158,7 @@ resetLinkForm();
                                     leave-active-class="transition ease-in-out"
                                     leave-to-class="opacity-0"
                                 >
-                                    <p v-if="form.recentlySuccessful" class="text-sm text-green-600 font-bold bg-green-100 px-2 border border-black">
+                                    <p v-if="form.recentlySuccessful" class="text-sm text-black font-black bg-neo-green px-2 border-2 border-black">
                                         SAVED!
                                     </p>
                                 </Transition>
@@ -166,18 +166,18 @@ resetLinkForm();
                         </form>
 
                         <div>
-                            <h3 class="text-xl font-black uppercase mb-4 bg-lime-300 dark:bg-pink-500 inline-block px-2 border-2 border-black dark:border-white text-black dark:text-white">
+                            <h3 class="text-xl font-black uppercase mb-4 bg-neo-pink inline-block px-2 border-3 border-black text-black">
                                 Links
                             </h3>
 
                             <form @submit.prevent="submitLink" class="space-y-4 mb-6">
                                 <div class="flex flex-col gap-2 sm:flex-row sm:items-center">
                                     <div class="flex-1">
-                                        <InputLabel for="link-title" value="Title" class="uppercase font-bold" />
+                                        <InputLabel for="link-title" value="Title" class="uppercase font-black" />
                                         <TextInput
                                             id="link-title"
                                             type="text"
-                                            class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                            class="mt-1 block w-full rounded-none border-3 border-black shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                             v-model="linkForm.title"
                                             required
                                         />
@@ -185,11 +185,11 @@ resetLinkForm();
                                     </div>
 
                                     <div class="flex-1">
-                                        <InputLabel for="link-url" value="URL" class="uppercase font-bold" />
+                                        <InputLabel for="link-url" value="URL" class="uppercase font-black" />
                                         <TextInput
                                             id="link-url"
                                             type="url"
-                                            class="mt-1 block w-full rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] focus:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] focus:translate-x-[2px] focus:translate-y-[2px] transition-all"
+                                            class="mt-1 block w-full rounded-none border-3 border-black shadow-neo focus:shadow-neo-sm focus:translate-x-[2px] focus:translate-y-[2px] transition-all font-bold"
                                             v-model="linkForm.url"
                                             required
                                         />
@@ -200,7 +200,7 @@ resetLinkForm();
                                 <div class="flex items-center gap-4">
                                     <PrimaryButton
                                         :disabled="linkForm.processing"
-                                        class="rounded-none border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all bg-black text-white font-black uppercase"
+                                        class="bg-black text-white hover:bg-gray-800"
                                     >
                                         {{ linkForm.id ? 'Update Link' : 'Add Link' }}
                                     </PrimaryButton>
@@ -209,7 +209,7 @@ resetLinkForm();
                                         v-if="linkForm.id"
                                         type="button"
                                         @click="resetLinkForm"
-                                        class="text-xs font-bold uppercase border-2 border-black px-3 py-2 bg-white hover:bg-gray-100 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                        class="text-xs font-black uppercase border-3 border-black px-3 py-2 bg-white hover:bg-gray-100 shadow-neo hover:shadow-neo-sm hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                                     >
                                         Cancel edit
                                     </button>
@@ -218,12 +218,12 @@ resetLinkForm();
 
                             <div
                                 v-if="page.links && page.links.length"
-                                class="space-y-2 border-2 border-black p-4 bg-gray-50 dark:bg-gray-900 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]"
+                                class="space-y-2 border-3 border-black p-4 bg-gray-50 shadow-neo"
                             >
                                 <div
                                     v-for="link in page.links"
                                     :key="link.id"
-                                    class="flex items-center justify-between gap-4 bg-white dark:bg-gray-800 border-2 border-black px-3 py-2"
+                                    class="flex items-center justify-between gap-4 bg-white border-3 border-black px-3 py-2"
                                 >
                                     <div>
                                         <p class="font-black uppercase text-sm">
@@ -233,7 +233,7 @@ resetLinkForm();
                                             :href="link.url"
                                             target="_blank"
                                             rel="noreferrer"
-                                            class="text-xs font-mono underline text-blue-700 dark:text-blue-400 break-all"
+                                            class="text-xs font-mono underline text-blue-700 break-all font-bold"
                                         >
                                             {{ link.url }}
                                         </a>
@@ -242,14 +242,14 @@ resetLinkForm();
                                         <button
                                             type="button"
                                             @click="editLink(link)"
-                                            class="text-xs font-bold uppercase border-2 border-black px-3 py-1 bg-yellow-300 hover:bg-yellow-200 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                            class="text-xs font-black uppercase border-2 border-black px-3 py-1 bg-neo-yellow hover:bg-yellow-200 shadow-neo-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                                         >
                                             Edit
                                         </button>
                                         <button
                                             type="button"
                                             @click="deleteLink(link.id)"
-                                            class="text-xs font-bold uppercase border-2 border-black px-3 py-1 bg-red-500 text-white hover:bg-red-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
+                                            class="text-xs font-black uppercase border-2 border-black px-3 py-1 bg-neo-pink text-white hover:bg-pink-400 shadow-neo-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
                                         >
                                             Delete
                                         </button>
@@ -258,7 +258,7 @@ resetLinkForm();
                             </div>
                             <p
                                 v-else
-                                class="text-xs font-mono uppercase text-gray-600 mt-2 border border-dashed border-gray-400 px-2 py-1 inline-block"
+                                class="text-xs font-mono uppercase text-gray-600 mt-2 border-2 border-dashed border-black px-2 py-1 inline-block font-bold"
                             >
                                 No links yet. Add your first one above.
                             </p>
@@ -267,16 +267,16 @@ resetLinkForm();
                         <!-- Supports Section -->
                         <div class="mt-12 border-t-4 border-dashed border-black pt-8">
                             <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-                                <h3 class="text-xl font-black uppercase bg-pink-500 inline-block px-2 border-2 border-black text-white">
+                                <h3 class="text-xl font-black uppercase bg-neo-blue inline-block px-2 border-3 border-black text-white">
                                     Received Supports
                                 </h3>
                                 <div v-if="supports_summary" class="text-xs font-mono uppercase">
-                                    <div class="border-2 border-black bg-yellow-200 px-3 py-1 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                                        <span class="font-black">Total:</span>
+                                    <div class="border-2 border-black bg-neo-yellow px-3 py-1 inline-block shadow-neo-sm font-black">
+                                        Total:
                                         ${{ (supports_summary.total_amount / 100).toFixed(2) }}
                                     </div>
-                                    <div class="mt-1 border-2 border-black bg-white px-3 py-1 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-                                        <span class="font-black">Supports:</span>
+                                    <div class="mt-1 border-2 border-black bg-white px-3 py-1 inline-block shadow-neo-sm font-black">
+                                        Supports:
                                         {{ supports_summary.count }}
                                     </div>
                                 </div>
@@ -286,29 +286,29 @@ resetLinkForm();
                                 <div
                                     v-for="support in page.supports"
                                     :key="support.id"
-                                    class="border-2 border-black p-4 bg-white dark:bg-gray-700 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                                    class="border-3 border-black p-4 bg-white shadow-neo hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-neo-sm transition-all"
                                 >
                                     <div class="flex justify-between items-start mb-3">
-                                        <span class="font-black uppercase bg-yellow-300 text-black px-1 border border-black text-sm truncate max-w-[120px]">
+                                        <span class="font-black uppercase bg-neo-yellow text-black px-1 border-2 border-black text-sm truncate max-w-[120px]">
                                             {{ support.supporter_name }}
                                         </span>
-                                        <span class="font-mono text-xs font-bold opacity-60">
+                                        <span class="font-mono text-xs font-black opacity-60">
                                             {{ new Date(support.created_at).toLocaleDateString() }}
                                         </span>
                                     </div>
                                     
-                                    <div class="mb-3 font-black text-3xl text-green-600 dark:text-green-400">
+                                    <div class="mb-3 font-black text-3xl text-neo-green drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">
                                         ${{ (support.amount / 100).toFixed(2) }}
                                     </div>
 
-                                    <p v-if="support.message" class="font-mono text-sm bg-gray-50 dark:bg-gray-800 p-2 border border-black dark:border-gray-600 italic">
+                                    <p v-if="support.message" class="font-mono text-sm bg-gray-50 p-2 border-2 border-black italic font-bold">
                                         "{{ support.message }}"
                                     </p>
                                 </div>
                             </div>
                             <p
                                 v-else
-                                class="text-xs font-mono uppercase text-gray-600 border border-dashed border-gray-400 px-2 py-1 inline-block"
+                                class="text-xs font-mono uppercase text-gray-600 border-2 border-dashed border-black px-2 py-1 inline-block font-bold"
                             >
                                 No supports received yet. Share your page!
                             </p>
