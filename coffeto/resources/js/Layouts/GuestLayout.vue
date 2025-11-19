@@ -1,20 +1,13 @@
 <script setup>
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import HomeLink from '@/Components/HomeLink.vue';
-import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-    <HomeLink />
     <div
         class="flex min-h-screen flex-col items-center bg-neo-yellow pt-6 sm:justify-center sm:pt-0"
     >
         <div>
-            <Link href="/">
-                <ApplicationLogo
-                    class="h-24 w-24 fill-current text-black drop-shadow-[4px_4px_0px_rgba(255,255,255,1)]"
-                />
-            </Link>
+            <HomeLink />
         </div>
 
         <div

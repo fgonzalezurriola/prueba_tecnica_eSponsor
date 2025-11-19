@@ -1,10 +1,7 @@
 <script setup>
-import Dropdown from '@/Components/Dropdown.vue';
-import DropdownLink from '@/Components/DropdownLink.vue';
 import HomeLink from '@/Components/HomeLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 const showingNavigationDropdown = ref(false);
@@ -12,7 +9,6 @@ const showingNavigationDropdown = ref(false);
 
 <template>
     <div>
-        <HomeLink />
         <div class="min-h-screen bg-orange-50">
             <nav class="border-b-3 border-black bg-white">
                 <!-- Primary Navigation Menu -->
@@ -20,13 +16,8 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex h-20 justify-between">
                         <div class="flex">
                             <!-- Logo -->
-                            <div class="flex shrink-0 items-center">
-                                <Link
-                                    :href="route('dashboard')"
-                                    class="text-2xl font-black uppercase tracking-tighter text-black hover:text-gray-700"
-                                >
-                                    Coffeto
-                                </Link>
+                            <div class="flex shrink-0 items-center gap-4">
+                                <HomeLink />
                             </div>
 
                             <!-- Navigation Links -->
@@ -48,50 +39,28 @@ const showingNavigationDropdown = ref(false);
                             </div>
                         </div>
 
-                        <div class="hidden sm:ms-6 sm:flex sm:items-center">
-                            <!-- Settings Dropdown -->
-                            <div class="relative ms-3">
-                                <Dropdown align="right" width="48">
-                                    <template #trigger>
-                                        <span class="inline-flex rounded-none">
-                                            <button
-                                                type="button"
-                                                class="inline-flex items-center rounded-none border-2 border-black bg-white px-3 py-2 text-sm font-bold leading-4 text-black shadow-neo transition duration-150 ease-in-out hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-neo-yellow hover:shadow-none focus:outline-none"
-                                            >
-                                                {{ $page.props.auth.user.name }}
+                        <div
+                            class="sm:ms hidden gap-8 sm:flex sm:items-center sm:gap-4"
+                        >
+                            <!-- Profile Link -->
+                            <NavLink
+                                :href="route('profile.edit')"
+                                :active="route().current('profile.edit')"
+                            >
+                                Profile
+                            </NavLink>
 
-                                                <svg
-                                                    class="-me-0.5 ms-2 h-4 w-4"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </template>
-
-                                    <template #content>
-                                        <DropdownLink
-                                            :href="route('profile.edit')"
-                                        >
-                                            Profile
-                                        </DropdownLink>
-                                        <DropdownLink
-                                            :href="route('logout')"
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </DropdownLink>
-                                    </template>
-                                </Dropdown>
-                            </div>
+                            <!-- Logout Button -->
+                            <form
+                                @submit.prevent="$inertia.post(route('logout'))"
+                            >
+                                <button
+                                    type="submit"
+                                    class="inline-flex items-center border-2 border-black bg-white px-3 py-2 text-sm font-bold leading-4 text-black shadow-neo transition duration-150 ease-in-out hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-neo-pink hover:text-white hover:shadow-none focus:outline-none"
+                                >
+                                    Log Out
+                                </button>
+                            </form>
                         </div>
 
                         <!-- Hamburger -->

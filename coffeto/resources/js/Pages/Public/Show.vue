@@ -43,12 +43,14 @@ const submitSupport = () => {
 <template>
     <Head :title="page.title" />
 
-    <!-- Home Link -->
-    <HomeLink />
-
     <div
         class="flex min-h-screen flex-col items-center justify-center bg-neo-yellow p-4 font-sans"
     >
+        <!-- Home Link -->
+        <div class="mb-8">
+            <HomeLink />
+        </div>
+
         <div class="w-full max-w-md">
             <!-- Profile Card -->
             <div
