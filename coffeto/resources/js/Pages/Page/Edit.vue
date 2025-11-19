@@ -262,6 +262,44 @@ resetLinkForm();
                                 No links yet. Add your first one above.
                             </p>
                         </div>
+
+                        <!-- Supports Section -->
+                        <div class="mt-12 border-t-4 border-dashed border-black pt-8">
+                            <h3 class="text-xl font-black uppercase mb-6 bg-pink-500 inline-block px-2 border-2 border-black text-white">
+                                Received Supports
+                            </h3>
+
+                            <div v-if="page.supports && page.supports.length" class="grid gap-4 sm:grid-cols-2">
+                                <div
+                                    v-for="support in page.supports"
+                                    :key="support.id"
+                                    class="border-2 border-black p-4 bg-white dark:bg-gray-700 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all"
+                                >
+                                    <div class="flex justify-between items-start mb-3">
+                                        <span class="font-black uppercase bg-yellow-300 text-black px-1 border border-black text-sm truncate max-w-[120px]">
+                                            {{ support.supporter_name }}
+                                        </span>
+                                        <span class="font-mono text-xs font-bold opacity-60">
+                                            {{ new Date(support.created_at).toLocaleDateString() }}
+                                        </span>
+                                    </div>
+                                    
+                                    <div class="mb-3 font-black text-3xl text-green-600 dark:text-green-400">
+                                        ${{ (support.amount / 100).toFixed(2) }}
+                                    </div>
+
+                                    <p v-if="support.message" class="font-mono text-sm bg-gray-50 dark:bg-gray-800 p-2 border border-black dark:border-gray-600 italic">
+                                        "{{ support.message }}"
+                                    </p>
+                                </div>
+                            </div>
+                            <p
+                                v-else
+                                class="text-xs font-mono uppercase text-gray-600 border border-dashed border-gray-400 px-2 py-1 inline-block"
+                            >
+                                No supports received yet. Share your page!
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

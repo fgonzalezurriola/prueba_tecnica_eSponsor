@@ -25,7 +25,7 @@ class PageController extends Controller
         ]);
 
         return Inertia::render('Page/Edit', [
-            'page' => $page->load('links'),
+            'page' => $page->load(['links', 'supports']),
         ]);
     }
 

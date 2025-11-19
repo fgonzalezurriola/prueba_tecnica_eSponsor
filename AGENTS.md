@@ -17,3 +17,11 @@
 - Naming: PascalCase for classes/components, camelCase for vars/functions, snake_case DB columns.
 - Imports: Group imports, prefer aliases like `@/Components` and `@/Pages`.
 - UI: brutalist aesthetic (high contrast, thick borders, hard shadows) across all pages.
+
+## Project Status
+- **Phase 1 (Data Architecture):** Completed. `User` -> `Page` -> (`Link`, `Support`).
+- **Phase 2 (Dashboard):** Completed. Profile editing, Link CRUD, Brutalist UI.
+- **Phase 3 (Public Page):** Completed. Public profile `/@slug` with links.
+- **Phase 4 (Supports):** Completed. Public visitors can support pages (simulated payments) via brutalist modal.
+- **Phase 5 (Dashboard Supports):** Completed. Creators can view their received supports history in the dashboard.
+- **Phase 6 (Documentation):** Completed. Root README.md created with full installation and usage instructions.
