@@ -2,11 +2,12 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PublicPageController;
+use App\Http\Controllers\SupportController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\PublicPageController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -34,6 +35,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/supports', [SupportController::class, 'store'])->name('supports.store');
 Route::get('/@{slug}', [PublicPageController::class, 'show'])->name('public.page');
-
+ 
 require __DIR__.'/auth.php';
+

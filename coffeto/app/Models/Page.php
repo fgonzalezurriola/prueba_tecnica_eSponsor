@@ -26,4 +26,13 @@ class Page extends Model
     {
         return $this->hasMany(Support::class)->latest();
     }
+
+    public function addSupport(array $attributes): Support
+    {
+        return $this->supports()->create([
+            'supporter_name' => $attributes['supporter_name'],
+            'message' => $attributes['message'] ?? null,
+            'amount' => $attributes['amount'],
+        ]);
+    }
 }

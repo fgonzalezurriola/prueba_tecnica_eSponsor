@@ -1,18 +1,19 @@
 # Project Commands & Guidelines
 
 ## Build, Lint & Test
-- **Start Dev:** `php artisan serve` & `npm run dev`
-- **Test All:** `php artisan test`
-- **Test Single:** `php artisan test --filter <TestName>`
-- **Lint PHP:** `./vendor/bin/pint`
-- **Lint JS/Vue:** `npm run lint` (ensure eslint/prettier are configured)
-- **Build Assets:** `npm run build`
+- All app commands run inside `coffeto/`.
+- Start Dev: `php artisan serve` & `npm run dev`
+- Test All: `php artisan test` (Pest)
+- Test Single: `php artisan test --filter <TestName>`
+- Lint PHP: `./vendor/bin/pint`
+- Lint JS/Vue: `npm run lint`
+- Build Assets: `npm run build`
 
-## Code Style & Conventions
-- **Stack:** Laravel 10+, Vue 3 (Composition API `<script setup>`), Inertia.js, Tailwind CSS.
-- **Formatting:** Follow PSR-12 for PHP. Use Prettier/ESLint for JS/Vue.
-- **Naming:** PascalCase for Classes/Components (`User.php`, `Button.vue`). camelCase for methods/variables. snake_case for DB columns.
-- **Imports:** Group imports. Use absolute paths (aliases) like `@/Components` where possible.
-- **Types:** Use strict typing in PHP (`declare(strict_types=1);`). Use TypeScript interfaces if TS is enabled.
-- **Error Handling:** Leverage Laravel's ExceptionHandler. Return consistent JSON/Inertia responses.
-- **Best Practices:** Keep controllers thin, use FormRequests for validation. Use Eloquent Resources for API responses.
+## Code Style, DDD & UI
+- Stack: Laravel 12 + Breeze, Vue 3 + Inertia, Tailwind CSS.
+- Domain: `Page` is the aggregate root; `Link` and `Support` always belong to a `Page`.
+- DDD: keep domain logic on models (e.g. `Page::addSupport()`), controllers thin, FormRequests for validation.
+- Formatting: PHP PSR-12 via Pint; JS/Vue via Prettier/ESLint.
+- Naming: PascalCase for classes/components, camelCase for vars/functions, snake_case DB columns.
+- Imports: Group imports, prefer aliases like `@/Components` and `@/Pages`.
+- UI: brutalist aesthetic (high contrast, thick borders, hard shadows) across all pages.
