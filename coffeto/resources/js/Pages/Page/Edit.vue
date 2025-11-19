@@ -8,6 +8,7 @@ import { Head, useForm, usePage } from '@inertiajs/vue3';
 
 const props = defineProps({
     page: Object,
+    supports_summary: Object,
 });
 
 const form = useForm({
@@ -265,9 +266,21 @@ resetLinkForm();
 
                         <!-- Supports Section -->
                         <div class="mt-12 border-t-4 border-dashed border-black pt-8">
-                            <h3 class="text-xl font-black uppercase mb-6 bg-pink-500 inline-block px-2 border-2 border-black text-white">
-                                Received Supports
-                            </h3>
+                            <div class="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                                <h3 class="text-xl font-black uppercase bg-pink-500 inline-block px-2 border-2 border-black text-white">
+                                    Received Supports
+                                </h3>
+                                <div v-if="supports_summary" class="text-xs font-mono uppercase">
+                                    <div class="border-2 border-black bg-yellow-200 px-3 py-1 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                                        <span class="font-black">Total:</span>
+                                        ${{ (supports_summary.total_amount / 100).toFixed(2) }}
+                                    </div>
+                                    <div class="mt-1 border-2 border-black bg-white px-3 py-1 inline-block shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+                                        <span class="font-black">Supports:</span>
+                                        {{ supports_summary.count }}
+                                    </div>
+                                </div>
+                            </div>
 
                             <div v-if="page.supports && page.supports.length" class="grid gap-4 sm:grid-cols-2">
                                 <div

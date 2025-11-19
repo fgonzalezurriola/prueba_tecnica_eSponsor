@@ -24,8 +24,14 @@ class PageController extends Controller
             'title' => $user->name,
         ]);
 
+        $page->load(['links', 'supports']);
+
         return Inertia::render('Page/Edit', [
-            'page' => $page->load(['links', 'supports']),
+            'page' => $page,
+            'supports_summary' => [
+                'count' => $page->supports->count(),
+                'total_amount' => $page->supports->sum('amount'),
+            ],
         ]);
     }
 
