@@ -18,7 +18,17 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $user = auth()->user();
+    $page = $user->page()->with(['supports', 'links'])->first();
+    
+    return Inertia::render('Dashboard', [
+        'page' => $page,
+        'stats' => $page ? [
+            'total_supports' => $page->supports->count(),
+            'total_amount' => $page->supports->sum('amount'),
+            'total_links' => $page->links->count(),
+        ] : null,
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

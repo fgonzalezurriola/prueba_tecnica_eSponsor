@@ -1,11 +1,10 @@
 <script setup>
-import { ref } from 'vue';
-import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 import { Link } from '@inertiajs/vue3';
+import { ref } from 'vue';
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -13,16 +12,17 @@ const showingNavigationDropdown = ref(false);
 <template>
     <div>
         <div class="min-h-screen bg-orange-50">
-            <nav
-                class="border-b-3 border-black bg-white"
-            >
+            <nav class="border-b-3 border-black bg-white">
                 <!-- Primary Navigation Menu -->
                 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                     <div class="flex h-20 justify-between">
                         <div class="flex">
                             <!-- Logo -->
                             <div class="flex shrink-0 items-center">
-                                <Link :href="route('dashboard')" class="text-2xl font-black uppercase tracking-tighter text-black hover:text-gray-700">
+                                <Link
+                                    :href="route('dashboard')"
+                                    class="text-2xl font-black uppercase tracking-tighter text-black hover:text-gray-700"
+                                >
                                     Coffeto
                                 </Link>
                             </div>
@@ -54,7 +54,7 @@ const showingNavigationDropdown = ref(false);
                                         <span class="inline-flex rounded-none">
                                             <button
                                                 type="button"
-                                                class="inline-flex items-center rounded-none border-2 border-black bg-white px-3 py-2 text-sm font-bold leading-4 text-black shadow-neo transition duration-150 ease-in-out hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none hover:bg-neo-yellow focus:outline-none"
+                                                class="inline-flex items-center rounded-none border-2 border-black bg-white px-3 py-2 text-sm font-bold leading-4 text-black shadow-neo transition duration-150 ease-in-out hover:translate-x-[2px] hover:translate-y-[2px] hover:bg-neo-yellow hover:shadow-none focus:outline-none"
                                             >
                                                 {{ $page.props.auth.user.name }}
 
@@ -141,7 +141,7 @@ const showingNavigationDropdown = ref(false);
                         block: showingNavigationDropdown,
                         hidden: !showingNavigationDropdown,
                     }"
-                    class="sm:hidden border-t-2 border-black bg-white"
+                    class="border-t-2 border-black bg-white sm:hidden"
                 >
                     <div class="space-y-1 pb-3 pt-2">
                         <ResponsiveNavLink
@@ -159,13 +159,9 @@ const showingNavigationDropdown = ref(false);
                     </div>
 
                     <!-- Responsive Settings Options -->
-                    <div
-                        class="border-t-2 border-black pb-1 pt-4"
-                    >
+                    <div class="border-t-2 border-black pb-1 pt-4">
                         <div class="px-4">
-                            <div
-                                class="text-base font-black text-black"
-                            >
+                            <div class="text-base font-black text-black">
                                 {{ $page.props.auth.user.name }}
                             </div>
                             <div class="text-sm font-bold text-gray-600">
@@ -191,7 +187,7 @@ const showingNavigationDropdown = ref(false);
 
             <!-- Page Heading -->
             <header
-                class="bg-neo-yellow border-b-3 border-black shadow-neo-sm"
+                class="border-b-3 border-black bg-neo-yellow shadow-neo-sm"
                 v-if="$slots.header"
             >
                 <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">

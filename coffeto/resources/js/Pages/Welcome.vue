@@ -22,25 +22,29 @@ defineProps({
 <template>
     <Head title="Welcome to Coffeto" />
     <div
-        class="min-h-screen bg-neo-yellow text-black flex items-center justify-center px-4"
+        class="flex min-h-screen items-center justify-center bg-neo-yellow px-4 text-black"
     >
         <div
-            class="max-w-4xl w-full border-3 border-black bg-white shadow-neo-lg p-8 flex flex-col gap-12"
+            class="flex w-full max-w-4xl flex-col gap-12 border-3 border-black bg-white p-8 shadow-neo-lg"
         >
-            <header class="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-3 border-black pb-8">
+            <header
+                class="flex flex-col justify-between gap-6 border-b-3 border-black pb-8 md:flex-row md:items-center"
+            >
                 <div class="flex items-center gap-4">
                     <div
-                        class="flex h-16 w-16 items-center justify-center border-3 border-black bg-black text-white font-black text-3xl tracking-tighter shadow-neo"
+                        class="flex h-16 w-16 items-center justify-center border-3 border-black bg-black text-3xl font-black tracking-tighter text-white shadow-neo"
                     >
                         C
                     </div>
                     <div class="space-y-1">
                         <h1
-                            class="text-4xl font-black tracking-tighter uppercase leading-none"
+                            class="text-4xl font-black uppercase leading-none tracking-tighter"
                         >
                             Coffeto
                         </h1>
-                        <p class="text-sm font-bold bg-black text-white inline-block px-2 py-1">
+                        <p
+                            class="inline-block bg-black px-2 py-1 text-sm font-bold text-white"
+                        >
                             v1.0 - NEOBRUTALISM EDITION
                         </p>
                     </div>
@@ -76,90 +80,113 @@ defineProps({
 
             <main class="flex flex-col gap-8">
                 <div class="space-y-4">
-                    <h2 class="text-6xl font-black uppercase leading-none tracking-tighter">
-                        Create.<br/>Share.<br/>Monetize.
+                    <h2
+                        class="text-6xl font-black uppercase leading-none tracking-tighter"
+                    >
+                        Create.<br />Share.<br />Monetize.
                     </h2>
-                    <p class="text-xl font-bold max-w-2xl border-l-4 border-neo-blue pl-4">
-                        The brutalist creator page you didn't know you needed. 
-                        No gradients, no rounded corners, just raw content power.
+                    <p
+                        class="max-w-2xl border-l-4 border-neo-blue pl-4 text-xl font-bold"
+                    >
+                        The brutalist creator page you didn't know you needed.
+                        No gradients, no rounded corners, just raw content
+                        power.
                     </p>
                 </div>
 
-                <div
-                    class="grid gap-6 md:grid-cols-2 items-stretch"
-                >
+                <div class="grid items-stretch gap-6 md:grid-cols-2">
                     <div
-                        class="group border-3 border-black bg-neo-blue p-6 flex flex-col justify-between shadow-neo hover:shadow-neo-lg transition-all hover:-translate-y-1"
+                        class="group flex flex-col justify-between border-3 border-black bg-neo-blue p-6 shadow-neo transition-all hover:-translate-y-1 hover:shadow-neo-lg"
                     >
-                        <div class="space-y-4 mb-8">
-                            <div class="w-12 h-12 bg-black text-white flex items-center justify-center border-2 border-white font-black text-xl">1</div>
+                        <div class="mb-8 space-y-4">
+                            <div
+                                class="flex h-12 w-12 items-center justify-center border-2 border-white bg-black text-xl font-black text-white"
+                            >
+                                1
+                            </div>
                             <h3
                                 class="text-2xl font-black uppercase tracking-tight"
                             >
                                 Public Demo
                             </h3>
                             <p class="font-bold text-black">
-                                Check out how a creator page looks in this style. Warning: It's loud.
+                                Check out how a creator page looks in this
+                                style. Warning: It's loud.
                             </p>
                         </div>
 
                         <Link
-                            :href="route('public.page', { slug: 'demo-creator' })"
-                            class="inline-flex items-center justify-center w-full border-2 border-black bg-white px-4 py-3 text-sm font-black uppercase tracking-tight text-black hover:bg-black hover:text-white transition-colors shadow-neo-sm"
+                            :href="
+                                route('public.page', { slug: 'demo-creator' })
+                            "
+                            class="inline-flex w-full items-center justify-center border-2 border-black bg-white px-4 py-3 text-sm font-black uppercase tracking-tight text-black shadow-neo-sm transition-colors hover:bg-black hover:text-white"
                         >
                             Visit /@demo-creator
                         </Link>
                     </div>
 
                     <div
-                        class="group border-3 border-black bg-neo-pink p-6 flex flex-col justify-between shadow-neo hover:shadow-neo-lg transition-all hover:-translate-y-1"
+                        class="group flex flex-col justify-between border-3 border-black bg-neo-pink p-6 shadow-neo transition-all hover:-translate-y-1 hover:shadow-neo-lg"
                     >
-                        <div class="space-y-4 mb-8">
-                            <div class="w-12 h-12 bg-black text-white flex items-center justify-center border-2 border-white font-black text-xl">2</div>
+                        <div class="mb-8 space-y-4">
+                            <div
+                                class="flex h-12 w-12 items-center justify-center border-2 border-white bg-black text-xl font-black text-white"
+                            >
+                                2
+                            </div>
                             <h3
                                 class="text-2xl font-black uppercase tracking-tight"
                             >
                                 Start Creating
                             </h3>
                             <p class="font-bold text-black">
-                                Join the revolution. Create your own page and start accepting support.
+                                Join the revolution. Create your own page and
+                                start accepting support.
                             </p>
                         </div>
 
                         <Link
                             :href="route('register')"
-                            class="inline-flex items-center justify-center w-full border-2 border-black bg-white px-4 py-3 text-sm font-black uppercase tracking-tight text-black hover:bg-black hover:text-white transition-colors shadow-neo-sm"
+                            class="inline-flex w-full items-center justify-center border-2 border-black bg-white px-4 py-3 text-sm font-black uppercase tracking-tight text-black shadow-neo-sm transition-colors hover:bg-black hover:text-white"
                         >
                             Get Started Now
                         </Link>
                     </div>
                 </div>
 
-                <div class="border-t-3 border-black pt-8 grid md:grid-cols-3 gap-8">
-                   <div class="border-2 border-black p-4 bg-gray-50 shadow-neo-sm">
-                        <h4 class="font-black uppercase mb-2">Built with</h4>
-                        <ul class="text-sm font-bold space-y-1">
+                <div
+                    class="grid gap-8 border-t-3 border-black pt-8 md:grid-cols-3"
+                >
+                    <div
+                        class="border-2 border-black bg-gray-50 p-4 shadow-neo-sm"
+                    >
+                        <h4 class="mb-2 font-black uppercase">Built with</h4>
+                        <ul class="space-y-1 text-sm font-bold">
                             <li>Laravel 12</li>
                             <li>Vue 3</li>
                             <li>Inertia</li>
                             <li>Tailwind CSS</li>
                         </ul>
-                   </div>
-                   <div class="border-2 border-black p-4 bg-gray-50 shadow-neo-sm">
-                        <h4 class="font-black uppercase mb-2">Style</h4>
-                        <ul class="text-sm font-bold space-y-1">
+                    </div>
+                    <div
+                        class="border-2 border-black bg-gray-50 p-4 shadow-neo-sm"
+                    >
+                        <h4 class="mb-2 font-black uppercase">Style</h4>
+                        <ul class="space-y-1 text-sm font-bold">
                             <li>Neobrutalism</li>
                             <li>High Contrast</li>
                             <li>Hard Shadows</li>
                             <li>Bold Typography</li>
                         </ul>
-                   </div>
-                   <div class="border-2 border-black p-4 bg-gray-50 shadow-neo-sm flex items-center justify-center bg-pattern">
-                        <p class="text-center font-black text-xs uppercase">
-                            Laravel v{{ laravelVersion }}<br/>
+                    </div>
+                    <div
+                        class="bg-pattern flex items-center justify-center border-2 border-black bg-gray-50 p-4 shadow-neo-sm"
+                    >
+                        <p class="text-center text-xs font-black uppercase">
+                            Laravel v{{ laravelVersion }}<br />
                             PHP v{{ phpVersion }}
                         </p>
-                   </div>
+                    </div>
                 </div>
             </main>
         </div>

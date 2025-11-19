@@ -1,8 +1,39 @@
 <template>
-    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="fill-current">
-        <rect x="10" y="20" width="60" height="60" stroke="currentColor" stroke-width="8" fill="none" />
-        <path d="M70 30h10a10 10 0 0 1 10 10v20a10 10 0 0 1-10 10h-10" stroke="currentColor" stroke-width="8" fill="none" />
-        <line x1="25" y1="40" x2="55" y2="40" stroke="currentColor" stroke-width="6" />
-        <line x1="25" y1="60" x2="45" y2="60" stroke="currentColor" stroke-width="6" />
+    <svg
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+        class="fill-current"
+    >
+        <rect
+            x="10"
+            y="20"
+            width="60"
+            height="60"
+            stroke="currentColor"
+            stroke-width="8"
+            fill="none"
+        />
+        <path
+            d="M70 30h10a10 10 0 0 1 10 10v20a10 10 0 0 1-10 10h-10"
+            stroke="currentColor"
+            stroke-width="8"
+            fill="none"
+        />
+        <line
+            x1="25"
+            y1="40"
+            x2="55"
+            y2="40"
+            stroke="currentColor"
+            stroke-width="6"
+        />
+        <line
+            x1="25"
+            y1="60"
+            x2="45"
+            y2="60"
+            stroke="currentColor"
+            stroke-width="6"
+        />
     </svg>
 </template>

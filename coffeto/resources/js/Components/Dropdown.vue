@@ -72,10 +72,7 @@ const open = ref(false);
                 style="display: none"
                 @click="open = false"
             >
-                <div
-                    class="ring-0"
-                    :class="contentClasses"
-                >
+                <div class="ring-0" :class="contentClasses">
                     <slot name="content" />
                 </div>
             </div>
